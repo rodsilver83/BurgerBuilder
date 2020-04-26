@@ -1,7 +1,5 @@
 .burger {
-  width: 75%;
-  margin: auto;
-  height: auto;
+  width: calc(100% - 40px);
   overflow: scroll;
   text-align: center;
   font-weight: bold;
@@ -10,13 +8,18 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+  padding: 20px;
+  border: 2px solid var(--secondary-color);
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px var(--secondary-color);
 }
 
 @media (min-width: 1000px) and (min-height: 700px) {
   .burger {
     width: 450px;
     height: 400px;
+    margin: auto;
   }
 }
 
@@ -25,5 +28,6 @@
   .burger {
     width: 300px;
     height: 250px;
+    margin: auto;
   }
 }

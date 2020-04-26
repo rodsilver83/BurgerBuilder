@@ -6,6 +6,7 @@
   --text-color: #efefef;
   --white-color: #efefef;
   --dark-text-color: #57380b;
+  --soft-border-radius: 5px;
 }
 
 * {

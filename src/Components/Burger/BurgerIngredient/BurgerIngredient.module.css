@@ -41,7 +41,7 @@
 .tomato {
   background-color: #f44336;
   height: 15px;
-  border-radius: 5px;
+  border-radius: var(--soft-border-radius);
   margin: 1px 15px;
   box-shadow: var(--ingredient-inset-shadow) #9b1f16;
   width: 95%;
@@ -50,7 +50,7 @@
 .lettuce {
   background-color: #8bc34a;
   height: 5px;
-  border-radius: 5px;
+  border-radius: var(--soft-border-radius);
   margin: 1px;
   box-shadow: var(--ingredient-inset-shadow) #4d9100;
   width: 100%;
@@ -67,7 +67,7 @@
 .bacon {
   background-color: #741811;
   height: 4px;
-  border-radius: 5px;
+  border-radius: var(--soft-border-radius);
   margin: 1px 10px;
   box-shadow: var(--ingredient-inset-shadow) #611f1a;
   width: 95%;

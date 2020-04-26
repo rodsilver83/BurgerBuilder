@@ -1,0 +1,19 @@
+.OrderSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.IngredientsList {
+  padding: 0 20px;
+}
+
+.IngredientsList span {
+  display: inline-block;
+  border: 1px solid var(--secondary-color);
+  border-radius: var(--soft-border-radius);
+  padding: 10px;
+  margin: 5px;
+}
+

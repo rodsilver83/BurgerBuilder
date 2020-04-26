@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Aux from '../../../Hoc/Aux/Aux';
 import Button from '../../UI/Button/Button';
+import css from './OrderSummary.module.css';
 
 class OrderSummary extends Component {
   componentDidUpdate() {
@@ -9,25 +9,25 @@ class OrderSummary extends Component {
 
   render() {
     const ingredientSummary = Object.keys(this.props.ingredients).map((key) => {
-      return <li key={key}>
-        <span style={{ textTransform: 'capitalize' }}>
-          {key}: {this.props.ingredients[key]}
-        </span>
-      </li>
+      return <span key={key} style={{ textTransform: 'capitalize' }}>
+        {key}: {this.props.ingredients[key]}
+      </span>
     });
 
     return (
-      <Aux>
+      <div className={css.OrderSummary}>
         <h3>Your Order</h3>
         <p>A delicious burger with the following ingredients:</p>
-        <ul>
+        <div className={css.IngredientsList}>
           {ingredientSummary}
-        </ul>
+        </div>
         <p>Total Price: <strong>${this.props.price.toFixed(2)}</strong></p>
         <p>Continue to checkout?</p>
-        <Button clicked={this.props.cancel} buttonType={'Danger'}>Cancel</Button>
-        <Button clicked={this.props.continue} buttonType={'Success'}>Continue</Button>
-      </Aux>
+        <div>
+          <Button clicked={this.props.cancel} buttonType={'Danger'}>Cancel</Button>
+          <Button clicked={this.props.continue} buttonType={'Success'}>Continue</Button>
+        </div>
+      </div>
     );
   }
 

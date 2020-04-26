@@ -2,7 +2,7 @@
   padding: 16px;
   border: 1px solid var(--white-color);
   color: var(--text-color);
-  border-radius: 2px;
+  border-radius: var(--soft-border-radius);
 }
 
 .BuildControls {
@@ -12,7 +12,6 @@
   flex-flow: column;
   align-items: center;
   box-shadow: 0 2px 1px #ccc;
-  margin: auto;
   padding: 10px 0;
   color: var(--text-color);
 }
@@ -58,4 +57,12 @@
   100% {
       transform: scale(1);
   }
+}
+
+.Controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  margin: 10px;
 }

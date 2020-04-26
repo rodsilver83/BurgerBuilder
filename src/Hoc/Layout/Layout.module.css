@@ -1,5 +1,8 @@
 .Content {
   margin-top: 56px;
   min-height: calc(100vh - 56px);
-  display: flow-root;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }

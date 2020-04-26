@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import CheckoutSummary from '../../Components/CheckoutSummary/CheckoutSummary/CheckoutSummary';
 import { Route } from 'react-router-dom';
 import ContactData from "./ContactData/ContactData";
@@ -39,7 +39,7 @@ class Checkout extends Component {
   }
 
   render() {
-    return (<div>
+    return (<Fragment>
       <CheckoutSummary ingredients={this.state.ingredients}
         checkoutCancelled={this.checkoutCancelledHandler}
         checkoutContinued={this.checkoutContinuedHandler}>
@@ -50,7 +50,7 @@ class Checkout extends Component {
           price={this.state.price} {...this.props}>
         </ContactData>}>
       </Route>
-    </div>)
+    </Fragment>)
   }
 }
 
