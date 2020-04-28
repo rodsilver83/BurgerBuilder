@@ -3,10 +3,16 @@ import css from './Input.module.css';
 
 const Input = (props) => {
   let inputElement = null;
+  const inputClasses = [css.InputElement];
+
+  if (props.invalid && props.shouldValidate && props.touched) {
+    inputClasses.push(css.Invalid);
+  }
+
   switch (props.elementType) {
     case 'input':
       inputElement = <input
-        className={css.InputElement}
+        className={inputClasses.join(' ')}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed}></input>

@@ -8,6 +8,7 @@
   padding: 10px;
   margin: 10px;
   font-weight: bold;
+  transition: ease-in-out all 0.3s;
 }
 
 .Button:hover {
@@ -15,7 +16,7 @@
 }
 
 .Button:disabled {
-  filter: saturate(0.5);
+  filter: saturate(0.2);
 }
 
 /* .Button:first-of-type {
