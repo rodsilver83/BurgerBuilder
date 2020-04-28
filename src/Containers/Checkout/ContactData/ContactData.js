@@ -5,34 +5,56 @@ import axios from '../../../axios-orders';
 import Spinner from '../../../Components/UI/Spinner/Spinner';
 import Input from '../../../Components/UI/Input/Input';
 
+const createInputConfig = (elType, type, placeholder, value) => {
+  return {
+    elementType: elType,
+    elementConfig: {
+      type: type,
+      placeholder: placeholder,
+    },
+    value: value
+  }
+}
+
 class ContactData extends Component {
   state = {
-    name: '',
-    email: '',
-    address: {
-      street: '',
-      zipCode: ''
+    orderForm: {
+      name: createInputConfig('input', 'text', 'Name', 'Lalo Landa'),
+      street: createInputConfig('input', 'text', 'Name', 'Test Street'),
+      zipCode: createInputConfig('input', 'text', 'Name', '10000'),
+      country: createInputConfig('input', 'text', 'Name', 'London'),
+      email: createInputConfig('input', 'text', 'Name', '123@burger.com'),
+      deliveryMethod: {
+        elementType: 'select',
+        elementConfig: {
+          options: [
+            {
+              value: 'fastest',
+              displayValue: 'fastest'
+            },
+            {
+              value: 'cheapest',
+              displayValue: 'cheapest'
+            }
+          ]
+        },
+        value: ''
+      }
     },
     loading: false
   }
 
   orderHandler = (event) => {
-    console.log(this.props);
     event.preventDefault();
     this.setState({ loading: true });
+    const formData = {};
+    for (let key in this.state.orderForm) {
+      formData[key] = this.state.orderForm[key].value;
+    }
     const order = {
       ingredients: this.props.ingredients,
       price: this.props.price,
-      cutomer: {
-        name: 'Lalo Landa',
-        address: {
-          street: 'Test Street',
-          zipCode: '00001',
-          country: 'London'
-        },
-        email: '123@test.com',
-        deliveryMethod: 'Fastest'
-      }
+      formData: formData
     }
     axios.post('/order.json', order)
       .then(response => {
@@ -44,12 +66,37 @@ class ContactData extends Component {
       });
   }
 
+  formChanged = (event, formEl) => {
+    const updateOrderForm = {
+      ...this.state.orderForm
+    }
+    const element = {
+      ...updateOrderForm[formEl.id]
+    }
+    element.value = event.target.value;
+    updateOrderForm[formEl.id] = element;
+    this.setState({ orderForm: updateOrderForm });
+  }
+
   render() {
-    let form = (<form>
-      <Input placeholder="Name" type="text" />
-      <Input placeholder="Email" type="email" />
-      <Input placeholder="Street" type="text" />
-      <Input placeholder="ZipCode" type="text" />
+    const formElements = [];
+    for (let key in this.state.orderForm) {
+      formElements.push({
+        id: key,
+        config: this.state.orderForm[key]
+      });
+    }
+    let form = (<form onSubmit={this.orderHandler}>
+      {formElements.map((formEl) =>
+        <Input
+          key={formEl.id}
+          elementType={formEl.config.elementType}
+          elementConfig={formEl.config.elementConfig}
+          value={formEl.config.value}
+          changed={(event) => {
+            this.formChanged(event, formEl)
+          }} />
+      )}
       <Button buttonType="Success" clicked={(event) => this.orderHandler(event)}>Order</Button>
     </form>
     );

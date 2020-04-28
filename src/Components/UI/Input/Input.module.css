@@ -1,6 +1,8 @@
 .Input {
   width: 100%;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Label {
@@ -13,4 +15,14 @@
   background-color: var(--white-color);
   font: inherit;
   padding: 10px 20px;
+  width: 300px;
+  margin: 10px auto;
+}
+
+.SelectElement {
+  border: 1px solid #ccc;
+  background-color: var(--white-color);
+  font: inherit;
+  width: 300px;
+  margin: 10px auto;
 }

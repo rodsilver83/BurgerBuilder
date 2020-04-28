@@ -3,12 +3,28 @@ import css from './Input.module.css';
 
 const Input = (props) => {
   let inputElement = null;
-  switch (props.type) {
-    case 'text':
-      inputElement = <input className={css.InputElement} type="text" {...props}></input>
+  switch (props.elementType) {
+    case 'input':
+      inputElement = <input
+        className={css.InputElement}
+        {...props.elementConfig}
+        value={props.value}
+        onChange={props.changed}></input>
+      break;
+    case 'select':
+      inputElement = <select
+        className={css.SelectElement}
+        value={props.value}
+        onChange={props.changed}>
+        {props.elementConfig.options.map((option) => (
+          <option key={option.value}
+            value={option.value}>
+            {option.value}
+          </option>
+        ))}
+      </select>
       break;
     default:
-      inputElement = <input className={css.InputElement} type="text" {...props}></input>
       break;
   }
   return (
