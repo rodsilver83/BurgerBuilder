@@ -45,7 +45,8 @@ class ContactData extends Component {
             }
           ]
         },
-        value: '',
+        value: 'fastest',
+        validation: {},
         valid: true
       }
     },
@@ -97,7 +98,7 @@ class ContactData extends Component {
 
   validateForm = (value, rules) => {
     let isValid = false;
-    if (rules && rules.required) {
+    if (rules.required) {
       isValid = value.trim() !== '';
     }
     if (rules.minLength) {
